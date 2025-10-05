@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-// Fungsi untuk menukar dua elemen menggunakan pointer
 void tukar(int *x, int *y) {
     int temp = *x;
     *x = *y;
@@ -9,32 +8,32 @@ void tukar(int *x, int *y) {
 }
 
 int main() {
-    int n;                 // Menyimpan jumlah elemen
-    int arr[1005];         // Array dengan kapasitas maksimal 1005 elemen
+    int n;
+    int nilai[1005];
 
-    // Input jumlah elemen array
-    cout << "Masukkan jumlah elemen: ";
+    cout << "Masukkan jumlah mahasiswa: ";
     cin >> n;
 
-    // Input elemen-elemen array
-    cout << "Masukkan elemen array: ";
+    cout << "Masukkan nilai mahasiswa: ";
     for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+        cin >> nilai[i];
     }
 
-    // Proses Bubble Sort
-    for (int i = 0; i < n - 1; i++) {           
-        for (int j = 0; j < n - i - 1; j++) {  
-            if (arr[j] > arr[j + 1]) {         
-                tukar(&arr[j], &arr[j + 1]);   
+    for (int i = 0; i < n - 1; i++) {
+        int posisiMin = i;
+        for (int j = i + 1; j < n; j++) {
+            if (nilai[j] < nilai[posisiMin]) {
+                posisiMin = j;
             }
+        }
+        if (posisiMin != i) {
+            tukar(&nilai[i], &nilai[posisiMin]);
         }
     }
 
-    // Output array setelah diurutkan
-    cout << "Array setelah diurutkan (Bubble Sort): ";
+    cout << "Nilai mahasiswa setelah diurutkan (Selection Sort): ";
     for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
+        cout << nilai[i] << " ";
     }
     cout << endl;
 
